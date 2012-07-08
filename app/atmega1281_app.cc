@@ -14,9 +14,15 @@ __USING_SYS
 int main(void)
 {
     ATMega1281_Gateway gateway;
+    OStream cout;
 
     while(true) {
         gateway.listenNetwork();
-        gateway.sendSerialMessage();
+        Alarm::delay(2000000);
+        
+        gateway.sendSerialMessage(gateway.getBuffer());
+        Alarm::delay(1000000);
+      //  cout << gateway.getBuffer();
+        Alarm::delay(1000);
     }
 }
